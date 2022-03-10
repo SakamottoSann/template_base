@@ -2,17 +2,16 @@
 
 @section('content')
 
-
 <main>
+<div style="text-align: right">
+		@include('template.show-error-success-redirect')
+	</div>
 	<div class="parallax-container">
 		<div class="container">
 			<h2 class="header center black-text truncate">Bem vindo</h2>
 		</div>
 	</div>
-	<div>
-		@include('template.show-error-success-redirect')
-		echo get_user_session()
-	</div>
+	
 </main>
 
 @stop

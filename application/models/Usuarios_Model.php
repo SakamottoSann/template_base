@@ -1,19 +1,54 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuarios_model extends CI_Model {
+class Usuarios_Model extends CI_Model {
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->database();
 	}
 
-	public function findLogin($login)
-	{
-		$this->db->select('*')
-			->from('users')
-			->where('email', $login);
+	public function all()
+    {
+        $this->db->select('*');
+        $this->db->from('usuarios');
+        
+        return $this->db->get();
+    }
 
-		return $this->db->get();
-	}
+    public function find($id)
+    {
+        $this->db->select('*');
+        $this->db->from('usuarios');
+        $this->db->where('id_usuario', $id);
+        
+        return $this->db->get();
+    }
+ 
+    public function update($id, $data)
+    {
+        if (! $id) {
+            return false;
+        }
+
+        $this->db->where('id_usuario', $id);
+        return $this->db->update('usuarios', $data);
+    }
+
+    public function updateSenha($id, $email, $senha)
+    {
+        $this->db->set('hash_senha', $senha);
+        $this->db->where('id_usuario', $id);
+        $this->db->where('email', $email);
+        $this->db->update('usuarios');
+
+        return ( !$this->db->affected_rows() ) ? false : true;
+    }
+
+    public function delete($id)
+    {
+        $this->db->where('id_usuario', $id);
+        return $this->db->delete('usuarios');
+    }
+   
 }
