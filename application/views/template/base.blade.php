@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>.:: CheckPoint ::.</title>
+	<title>.:: Controle Interno ::.</title>
 	
 	<meta name="theme-color" content="#1a237e">
 	<meta name="apple-mobile-web-app-capable" content="yes">  

@@ -1,18 +1,19 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Usuarios_Model extends CI_Model {
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->database();
-	}
+class Usuarios_Model extends CI_Model
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+    }
 
-	public function all()
+    public function all()
     {
         $this->db->select('*');
         $this->db->from('usuarios');
-        
+
         return $this->db->get();
     }
 
@@ -21,13 +22,32 @@ class Usuarios_Model extends CI_Model {
         $this->db->select('*');
         $this->db->from('usuarios');
         $this->db->where('id_usuario', $id);
-        
+
         return $this->db->get();
     }
- 
+
+
+    public function save($data)
+    {
+        if (!$data) {
+            return false;
+        }
+
+        $insert  =  array(
+            'nome'  =>  $data['name'],
+            'email'  =>  $data['email'],
+            'telefone'  =>  $data['tel'],
+            'hash_senha' => $data['hash_senha']
+        );
+
+        $this->db->insert('usuarios',  $insert);
+
+        return true;
+    }
+
     public function update($id, $data)
     {
-        if (! $id) {
+        if (!$id) {
             return false;
         }
 
@@ -42,7 +62,7 @@ class Usuarios_Model extends CI_Model {
         $this->db->where('email', $email);
         $this->db->update('usuarios');
 
-        return ( !$this->db->affected_rows() ) ? false : true;
+        return (!$this->db->affected_rows()) ? false : true;
     }
 
     public function delete($id)
@@ -50,5 +70,4 @@ class Usuarios_Model extends CI_Model {
         $this->db->where('id_usuario', $id);
         return $this->db->delete('usuarios');
     }
-   
 }
