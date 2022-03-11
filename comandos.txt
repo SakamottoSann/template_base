@@ -1,0 +1,2 @@
+ // return $this->template->view('bemvindo');
+ // return header('Location: '.base_url('Welcome'),$info);
