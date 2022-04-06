@@ -1,8 +1,6 @@
 <p align="center">
-  <a href="https://expo.dev/">
-    <img alt="expo examples" height="128" src="./.gh-assets/banner.png">
-    <h1 align="center">Expo MaxtecApp</h1>
-  </a>
+<code><img height="80" src="https://github.com/expo/logos/blob/main/png/snack.png"></code>
+   <h1 align="center">Expo MaxtecApp</h1>
 </p>
 
 ## Instalando Dependencias
